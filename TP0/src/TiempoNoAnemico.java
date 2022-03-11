@@ -3,8 +3,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class TiempoNoAnemico {
-	Date fechaHoy;
-	Calendar c;
+	private Date fechaHoy;
+	private Calendar c;
 
 	public TiempoNoAnemico(Date fecha) {
 		fechaHoy = fecha;
@@ -21,4 +21,13 @@ public class TiempoNoAnemico {
 		System.out.println(new SimpleDateFormat("EEEE").format(fechaHoy) + " " + (c.get(Calendar.DAY_OF_MONTH)) + " de "
 				+ (new SimpleDateFormat("MMMM").format(fechaHoy) + " de " + c.get(Calendar.YEAR)));
 	}
+
+	public Date getFechaHoy() {
+		return fechaHoy;
+	}
+
+	public void setFechaHoy(Date fechaHoy) {
+		this.fechaHoy = fechaHoy;
+	}
+
 }
