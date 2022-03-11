@@ -1,12 +1,18 @@
+import java.util.Calendar;
+import java.util.Date;
 
 public class Main {
 	public static void main(String[] args) {
 		// Impresión anémica
-		Tiempo fecha = new Tiempo(3, 4, 2020);
-		System.out
-				.println("Impresión fecha tipo corto: " + fecha.getDia() + "/" + fecha.getMes() + "/" + fecha.getAño());
+		Date fechaHoy = new Date();
+		Calendar c = Calendar.getInstance();
+		c.setTime(fechaHoy);
+		TiempoAnemico fechaA = new TiempoAnemico(c.get(Calendar.DAY_OF_MONTH), (c.get(Calendar.MONTH) + 1),
+				c.get(Calendar.YEAR));
+		System.out.println("Impresión fecha modo anémico formato corto: \n" + fechaA.getDia() + "/" + fechaA.getMes()
+				+ "/" + fechaA.getAño());
 		String mes = "default";
-		switch (fecha.getMes()) {
+		switch (fechaA.getMes()) {
 		case 1: {
 			mes = "enero";
 			break;
@@ -56,6 +62,17 @@ public class Main {
 			break;
 		}
 		}
-		System.out.println("\nImpresión fecha tipo largo: " + fecha.getDia() + " de " + mes + " de " + fecha.getAño());
+		System.out.println("\nImpresión fecha modo anémico formato largo: \n" + fechaA.getDia() + " de " + mes + " de "
+				+ fechaA.getAño());
+
+		/********************************
+		 * Tiempo no anémico
+		 **********************************/
+
+		TiempoNoAnemico fechaNA = new TiempoNoAnemico(fechaHoy);
+		System.out.println("\nImpresión fecha de modo no anémico en formato corto: ");
+		fechaNA.ImprimirFormatoCorto();
+		System.out.println("\nImpresión fecha de modo no anémico en formato largo: ");
+		fechaNA.ImprimirFormatoLargo();
 	}
 }

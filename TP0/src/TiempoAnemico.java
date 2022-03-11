@@ -1,12 +1,12 @@
 
-public class Tiempo {
+public class TiempoAnemico {
 	private int dia;
 	private int mes;
 	private int año;
 
 	// La clase tiempo es solo un contenedor que recibe y entrega variables. No
 	// tiene lógica interna.
-	public Tiempo(int dia, int mes, int año) {
+	public TiempoAnemico(int dia, int mes, int año) {
 		this.dia = dia;
 		this.mes = mes;
 		this.año = año;
