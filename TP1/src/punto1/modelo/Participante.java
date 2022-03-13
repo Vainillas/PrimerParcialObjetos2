@@ -49,4 +49,10 @@ public class Participante {
 		this.puntaje = puntaje;
 	}
 
+	@Override
+	public String toString() {
+		return "\nParticipante [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", puntaje=" + puntaje
+				+ "]";
+	}
+
 }
