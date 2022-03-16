@@ -33,7 +33,14 @@ public class Menu {
 
 	@Override
 	public String toString() {
-		return "\nMenú Disponible: " + listaConsumibles;
+		StringBuilder sb = new StringBuilder("\nMenú Disponible: ");
+
+		for (Consumible c : listaConsumibles) {
+			sb.append("\n" + listaConsumibles.indexOf(c) + ". ").append(c.toString());
+		}
+
+		return sb.toString();
+
 	}
 
 }
