@@ -22,9 +22,9 @@ public class ConcursoTest {
 		Participante p3 = new Participante("Carlos", "Perez", "37.546.987");
 		// Ejercitación
 		try {
-			c.inscribirParticipante(p3, fechaInscripcion);
-			c.inscribirParticipante(p2);
-			c.inscribirParticipante(p1, fechaExcedida);
+			c.inscribirParticipante(p3, fechaInscripcion); // Fecha entre el rango de inicio y de fin
+			c.inscribirParticipante(p2, fechaIni); // Fecha de inicio del concurso
+			c.inscribirParticipante(p1, fechaExcedida); // Fecha excedida
 		} catch (AppException e) {
 			System.out.println(e.getMessage());
 		}

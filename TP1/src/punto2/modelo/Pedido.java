@@ -5,10 +5,12 @@ import java.util.ArrayList;
 public class Pedido {
 	private ArrayList<Item> listaItems;
 	private Estado estado;
+	private boolean pagado;
 
 	public Pedido(ArrayList<Item> listaItems) {
 		this.listaItems = listaItems;
 		this.estado = new Estado();
+		pagado = false;
 	}
 
 	public boolean agregarItem(Item item) {
@@ -57,6 +59,23 @@ public class Pedido {
 
 	public void confirmarPedido() throws StateException {
 		estado.confirmar();
+	}
+
+	public boolean confirmado() {
+		return this.estado.confirmado();
+	}
+
+	public boolean pendiente() {
+		return this.estado.pendiente();
+	}
+
+	public Pago pagarPedido(TarjetaCredito formaPago, double propina) {
+		Pago p = null;
+		if (this.confirmado() && pagado == false) {
+			p = new Pago(formaPago, this, propina);
+			pagado = true;
+		}
+		return p;
 	}
 
 }

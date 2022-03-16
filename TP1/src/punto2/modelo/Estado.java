@@ -9,10 +9,6 @@ public class Estado {
 		this.estado = PENDIENTE;
 	}
 
-	public String getEstado() {
-		return estado;
-	}
-
 	public void confirmar() throws StateException {
 		if (estado.equals(PENDIENTE)) {
 			this.estado = CONFIRMADO;
