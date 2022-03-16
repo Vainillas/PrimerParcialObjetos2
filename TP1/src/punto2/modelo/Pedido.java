@@ -2,6 +2,8 @@ package punto2.modelo;
 
 import java.util.ArrayList;
 
+import punto2.exception.StateException;
+
 public class Pedido {
 	private ArrayList<Item> listaItems;
 	private Estado estado;
@@ -76,6 +78,14 @@ public class Pedido {
 			pagado = true;
 		}
 		return p;
+
+	}
+
+	@Override
+	public String toString() {
+		return "\n-Pedido- \nLista Items: " + listaItems + "\n Estado=" + estado + "\nTotal Comida: $"
+				+ this.totalComidaPedido() + "\nTotal Bebida: $" + this.totalBebidasPedido() + "\nTotal Pedido: $"
+				+ this.totalPedido();
 	}
 
 }

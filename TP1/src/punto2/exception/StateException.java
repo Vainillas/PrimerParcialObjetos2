@@ -1,4 +1,4 @@
-package punto2.modelo;
+package punto2.exception;
 
 public class StateException extends Exception {
 

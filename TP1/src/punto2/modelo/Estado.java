@@ -1,5 +1,7 @@
 package punto2.modelo;
 
+import punto2.exception.StateException;
+
 public class Estado {
 	private String estado;
 	private static final String PENDIENTE = "PENDIENTE";
