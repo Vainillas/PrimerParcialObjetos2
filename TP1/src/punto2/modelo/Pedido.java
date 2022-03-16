@@ -25,6 +25,36 @@ public class Pedido {
 			return false;
 	}
 
+	public double totalPedido() {
+		double total = 0;
+		for (Item i : listaItems) {
+			total = total + i.precioTotal();
+		}
+		return total;
+	}
+
+	public double totalBebidasPedido() {
+		double total = 0;
+		for (Item i : listaItems) {
+			if (i.getConsumible() instanceof Bebida) {
+				total = total + i.precioTotal();
+			}
+
+		}
+		return total;
+	}
+
+	public double totalComidaPedido() {
+		double total = 0;
+		for (Item i : listaItems) {
+			if (i.getConsumible() instanceof Comida) {
+				total = total + i.precioTotal();
+			}
+
+		}
+		return total;
+	}
+
 	public void confirmarPedido() throws StateException {
 		estado.confirmar();
 	}
