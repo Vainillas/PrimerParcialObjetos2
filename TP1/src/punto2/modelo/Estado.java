@@ -27,4 +27,8 @@ public class Estado {
 		return estado.equals(PENDIENTE);
 	}
 
+	public String toString() {
+		return estado;
+	}
+
 }
