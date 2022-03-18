@@ -1,5 +1,7 @@
 package punto2.test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.ArrayList;
 
 import org.junit.Test;
@@ -18,7 +20,7 @@ import punto2.modelo.TarjetaVisa;
 
 public class RestaurantTest {
 	@Test
-	public static void main(String[] args) throws StateException {
+	public void main() throws StateException {
 		// Inicialización
 		Consumible c1 = new Bebida("Coca Cola 500ml", 120);
 		Consumible c2 = new Bebida("Aquarius 150ml", 70);
@@ -59,19 +61,24 @@ public class RestaurantTest {
 		// Ejercitación
 		System.out.println(p1.toString());
 
-		Pago pago1 = p1.pagarPedido(visa, 0.05); // $1018 bebidas con descuento del 3% + $2400 = $3418 | Con propina de
-													// 5% se va a $3589
+		Pago pago1 = p1.pagarPedido(visa, 0.05); // $1018.5 bebidas con descuento del 3% + $2400 = $3418.5 | Con propina
+													// de
+													// 5% se va a $3589.425
 		Pago pago2 = p2.pagarPedido(mastercard, 0.05); // $2352 platos con descuento del 2% + $1050 = 3402 | Con propina
-														// de 5% se va a $3572
-		Pago pago3 = p3.pagarPedido(comarcaPlus, 0.05); // $3381 con descuento de 2% | Con propina de 5% se va a $3350
-		Pago pago4 = p4.pagarPedido(viedma, 0.05); // $3450 sin descuento | Con propina de 5% se va a $3622
+														// de 5% se va a $3572.1
+		Pago pago3 = p3.pagarPedido(comarcaPlus, 0.05); // $3381 con descuento de 2% | Con propina de 5% se va a
+														// $3350.05
+		Pago pago4 = p4.pagarPedido(viedma, 0.05); // $3450 sin descuento | Con propina de 5% se va a $3622.5
 		// Verificación
-		System.out.println(pago1.toString());
-		System.out.println(pago2.toString());
-		System.out.println(pago3.toString());
-		System.out.println(pago4.toString());
+		double p = 3589.425;
+		assertEquals(p, pago1.getTotal());
+		p = 3572.1;
+		assertEquals(p, pago2.getTotal());
+		p = 3550.05;
+		assertEquals(p, pago3.getTotal());
+		p = 3622.5;
+		assertEquals(p, pago4.getTotal());
 
-		// assertEquals(); // ??? No se como usarlo
 	}
 
 }
