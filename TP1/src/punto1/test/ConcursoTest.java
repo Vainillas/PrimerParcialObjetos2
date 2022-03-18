@@ -33,7 +33,7 @@ public class ConcursoTest {
 		// Verificacion
 		assertEquals(0, p3.getPuntaje());
 		assertEquals(10, p2.getPuntaje());
-		assertEquals(0, p1.getPuntaje());
+		assertEquals(false, c.estaInscripto(p1));
 	}
 
 }

@@ -37,13 +37,15 @@ public class Concurso {
 	}
 
 	public void inscribirParticipante(Participante participante, LocalDate fechaInscripcion) throws AppException {
-		if (fechaInscripcion.isEqual(fechaInicio)
-				|| ((fechaInscripcion.isAfter(fechaInicio) && fechaInscripcion.isBefore(fechaFin)))) {
-			listaParticipantes.add(participante);
-		} else {
-			throw new AppException("El participante no puede inscribirse fuera del rango de fecha de inscripción");
+		if (!estaInscripto(participante)) {
+			if (fechaInscripcion.isEqual(fechaInicio)
+					|| ((fechaInscripcion.isAfter(fechaInicio) && fechaInscripcion.isBefore(fechaFin)))) {
+				listaParticipantes.add(participante);
+			} else {
+				throw new AppException("El participante no puede inscribirse fuera del rango de fecha de inscripción");
+			}
+			validarPuntajeExtra(participante, fechaInscripcion);
 		}
-		validarPuntajeExtra(participante, fechaInscripcion);
 	}
 
 	public boolean validarPuntajeExtra(Participante p, LocalDate f) {
@@ -52,6 +54,10 @@ public class Concurso {
 			return true;
 		} else
 			return false;
+	}
+
+	public boolean estaInscripto(Participante p) {
+		return listaParticipantes.contains(p);
 	}
 
 	public String getNombre() {
