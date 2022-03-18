@@ -1,5 +1,7 @@
 package punto1.test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
@@ -29,7 +31,9 @@ public class ConcursoTest {
 			System.out.println(e.getMessage());
 		}
 		// Verificacion
-		System.out.println(c.getListaParticipantes().toString());
+		assertEquals(0, p3.getPuntaje());
+		assertEquals(10, p2.getPuntaje());
+		assertEquals(0, p1.getPuntaje());
 	}
 
 }
