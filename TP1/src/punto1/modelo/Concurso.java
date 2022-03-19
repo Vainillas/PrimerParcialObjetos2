@@ -5,7 +5,8 @@ import java.util.ArrayList;
 
 import punto1.exception.AppException;
 
-public class Concurso {
+public class Concurso { // Eliminados los setters de concurso
+						// Renombrados los getters
 	public static final int puntosExtra = 10;
 	private String nombre;
 	private ArrayList<Participante> listaParticipantes;
@@ -60,39 +61,23 @@ public class Concurso {
 		return listaParticipantes.contains(p);
 	}
 
-	public String getNombre() {
+	public String nombre() {
 		return nombre;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public ArrayList<Participante> getListaParticipantes() {
+	public ArrayList<Participante> listaParticipantes() {
 		return listaParticipantes;
 	}
 
-	public void setListaParticipantes(ArrayList<Participante> listaParticipantes) {
-		this.listaParticipantes = listaParticipantes;
-	}
-
-	public LocalDate getFechaInicio() {
+	public LocalDate fechaInicio() {
 		return fechaInicio;
 	}
 
-	public void setFechaInicio(LocalDate fechaInicio) {
-		this.fechaInicio = fechaInicio;
-	}
-
-	public LocalDate getFechaFin() {
+	public LocalDate fechaFin() {
 		return fechaFin;
 	}
 
-	public void setFechaFin(LocalDate fechaFin) {
-		this.fechaFin = fechaFin;
-	}
-
-	public static int getPuntosextra() {
+	public static int puntosExtra() {
 		return puntosExtra;
 	}
 

@@ -4,7 +4,8 @@ public class Participante {
 	private String nombre;
 	private String apellido;
 	private String dni;
-	private int puntaje; // ¿El puntaje del participante depende del concurso?
+	private int puntaje; // Eliminados los setters de participante
+							// Renombrados los getters
 
 	public Participante(String nombre, String apellido, String dni) {
 		this.nombre = nombre;
@@ -17,36 +18,20 @@ public class Participante {
 		this.puntaje = puntaje + puntosextra;
 	}
 
-	public String getNombre() {
+	public String nombre() {
 		return nombre;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getApellido() {
+	public String apellido() {
 		return apellido;
 	}
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
-	public String getDni() {
+	public String dni() {
 		return dni;
 	}
 
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
-
-	public int getPuntaje() {
+	public int puntaje() {
 		return puntaje;
-	}
-
-	public void setPuntaje(int puntaje) {
-		this.puntaje = puntaje;
 	}
 
 	@Override

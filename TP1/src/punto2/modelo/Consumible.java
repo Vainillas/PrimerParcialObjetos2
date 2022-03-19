@@ -9,20 +9,12 @@ public class Consumible {
 		this.precio = precio;
 	}
 
-	public String getNombre() {
+	public String nombre() {
 		return nombre;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public double getPrecio() {
+	public double precio() {
 		return precio;
-	}
-
-	public void setPrecio(double precio) {
-		this.precio = precio;
 	}
 
 	public String toString() {

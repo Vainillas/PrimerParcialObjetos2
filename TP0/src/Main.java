@@ -1,14 +1,15 @@
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Main {
 	public static void main(String[] args) {
+		// Getters y setters borrados del no anemico
+		// Devuelven string en vez del syso
+		// Reemplazado el Calendar y Date por LocalDate
+
 		// Impresión anémica
-		Date fechaHoy = new Date();
-		Calendar c = Calendar.getInstance();
-		c.setTime(fechaHoy);
-		TiempoAnemico fechaA = new TiempoAnemico(c.get(Calendar.DAY_OF_MONTH), (c.get(Calendar.MONTH) + 1),
-				c.get(Calendar.YEAR));
+		LocalDate fechaHoy = LocalDate.now();
+		TiempoAnemico fechaA = new TiempoAnemico(fechaHoy.getDayOfMonth(), fechaHoy.getMonthValue(),
+				fechaHoy.getYear());
 		System.out.println("Impresión fecha modo anémico formato corto: \n" + fechaA.getDia() + "/" + fechaA.getMes()
 				+ "/" + fechaA.getAño());
 		String mes = "default";
@@ -71,8 +72,8 @@ public class Main {
 
 		TiempoNoAnemico fechaNA = new TiempoNoAnemico(fechaHoy);
 		System.out.println("\nImpresión fecha de modo no anémico en formato corto: ");
-		fechaNA.ImprimirFormatoCorto();
+		System.out.println(fechaNA.formatoCorto());
 		System.out.println("\nImpresión fecha de modo no anémico en formato largo: ");
-		fechaNA.ImprimirFormatoLargo();
+		System.out.println(fechaNA.formatoLargo());
 	}
 }

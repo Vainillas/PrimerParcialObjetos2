@@ -5,44 +5,68 @@ import java.util.ArrayList;
 import punto2.exception.StateException;
 
 public class Pedido {
-	private ArrayList<Item> listaItems;
+	private ArrayList<Bebida> listaBebida;
+	private ArrayList<Comida> listaComida;
 	private Estado estado;
 	private boolean pagado;
 
-	public Pedido(ArrayList<Item> listaItems) {
-		this.listaItems = listaItems;
+	public Pedido() {
+		listaComida = new ArrayList<>();
+		listaBebida = new ArrayList<>();
 		this.estado = new Estado();
 		pagado = false;
 	}
 
-	public boolean agregarItem(Item item) {
-		if (estado.pendiente() && (!listaItems.contains(item))) {
-			return listaItems.add(item);
+	public Pedido(ArrayList<Bebida> listaBebida, ArrayList<Comida> listaComida) {
+		this();
+		this.listaComida = listaComida;
+		this.listaBebida = listaBebida;
+	}
+
+	public boolean agregarComida(Comida c) {
+		if (estado.pendiente()) {
+			return listaComida.add(c);
 		} else
 			return false;
 	}
 
-	public boolean eliminarItem(Item item) {
-		if (estado.pendiente() && listaItems.contains(item))
-			return listaItems.remove(item);
+	public boolean agregarBebida(Bebida b) {
+		if (estado.pendiente()) {
+			return listaBebida.add(b);
+		} else
+			return false;
+	}
+
+	public boolean eliminarBebida(Bebida b) {
+		if (estado.pendiente() && listaBebida.contains(b))
+			return listaBebida.remove(b);
+		else
+			return false;
+	}
+
+	public boolean eliminarComida(Comida c) {
+		if (estado.pendiente() && listaComida.contains(c))
+			return listaComida.remove(c);
 		else
 			return false;
 	}
 
 	public double totalPedido() {
 		double total = 0;
-		for (Item i : listaItems) {
-			total = total + i.precioTotal();
+		for (Comida c : listaComida) {
+			total = total + c.precio();
+		}
+		for (Bebida b : listaBebida) {
+			total = total + b.precio();
 		}
 		return total;
 	}
 
 	public double totalBebidasPedido() {
 		double total = 0;
-		for (Item i : listaItems) {
-			if (i.getConsumible() instanceof Bebida) {
-				total = total + i.precioTotal();
-			}
+		for (Bebida b : listaBebida) {
+			// if (i.getConsumible() instanceof Bebida) {// No va
+			total = total + b.precio();
 
 		}
 		return total;
@@ -50,10 +74,9 @@ public class Pedido {
 
 	public double totalComidaPedido() {
 		double total = 0;
-		for (Item i : listaItems) {
-			if (i.getConsumible() instanceof Comida) {
-				total = total + i.precioTotal();
-			}
+		for (Comida c : listaComida) {
+			// if (i.getConsumible() instanceof Comida) { // No va
+			total = total + c.precio();
 
 		}
 		return total;
@@ -83,9 +106,9 @@ public class Pedido {
 
 	@Override
 	public String toString() {
-		return "\n-Pedido- \nLista Items: " + listaItems + "\n Estado=" + estado + "\nTotal Comida: $"
-				+ this.totalComidaPedido() + "\nTotal Bebida: $" + this.totalBebidasPedido() + "\nTotal Pedido: $"
-				+ this.totalPedido();
+		return "\n-Pedido- \nLista Platos: " + listaComida + "\nLista Bebidas: " + listaBebida + "\n Estado=" + estado
+				+ "\nTotal Comida: $" + this.totalComidaPedido() + "\nTotal Bebida: $" + this.totalBebidasPedido()
+				+ "\nTotal Pedido: $" + this.totalPedido();
 	}
 
 }

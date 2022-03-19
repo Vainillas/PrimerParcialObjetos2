@@ -10,30 +10,61 @@ import punto1.exception.AppException;
 import punto1.modelo.Concurso;
 import punto1.modelo.Participante;
 
-public class ConcursoTest {
+public class ConcursoTest { // Creado un metodo para su respectivo test
+	LocalDate fechaIni = LocalDate.of(2022, 3, 13);
+	LocalDate fechaFin = LocalDate.of(2022, 3, 23);
+
 	@Test
-	public void simpleAdd() {
+	public void inscripcionFechaInicial() {
 		// Ini
-		LocalDate fechaIni = LocalDate.of(2022, 3, 13);
-		LocalDate fechaFin = LocalDate.of(2022, 3, 23);
-		LocalDate fechaExcedida = LocalDate.of(2022, 3, 24);
-		LocalDate fechaInscripcion = LocalDate.of(2022, 3, 17);
+
 		Concurso c = new Concurso("Concurso de dibujo", fechaIni, fechaFin);
 		Participante p1 = new Participante("Mateo", "Aliberti", "43.303.613");
-		Participante p2 = new Participante("Cosme", "Fulanito", "52.657.154");
-		Participante p3 = new Participante("Carlos", "Perez", "37.546.987");
+
 		// Ejercitación
 		try {
-			c.inscribirParticipante(p3, fechaInscripcion); // Fecha entre el rango de inicio y de fin
-			c.inscribirParticipante(p2, fechaIni); // Fecha de inicio del concurso
+			c.inscribirParticipante(p1, fechaIni); // Fecha de inicio del concurso
+		} catch (AppException e) {
+			System.out.println(e.getMessage());
+		}
+		// Verificacion
+		assertEquals(10, p1.puntaje());
+		assertEquals(true, c.estaInscripto(p1));
+	}
+
+	@Test
+	public void inscripcionFechaExcedida() {
+		// Ini
+		LocalDate fechaExcedida = LocalDate.of(2022, 3, 24);
+		Concurso c = new Concurso("Concurso de dibujo", fechaIni, fechaFin);
+		Participante p1 = new Participante("Mateo", "Aliberti", "43.303.613");
+		// Ejercitación
+		try {
 			c.inscribirParticipante(p1, fechaExcedida); // Fecha excedida
 		} catch (AppException e) {
 			System.out.println(e.getMessage());
 		}
 		// Verificacion
-		assertEquals(0, p3.getPuntaje());
-		assertEquals(10, p2.getPuntaje());
+		assertEquals(0, p1.puntaje());
 		assertEquals(false, c.estaInscripto(p1));
+	}
+
+	@Test
+	public void inscripcionEnTermino() {
+
+		// Ini
+		LocalDate fechaInscripcion = LocalDate.of(2022, 3, 17);
+		Concurso c = new Concurso("Concurso de dibujo", fechaIni, fechaFin);
+		Participante p1 = new Participante("Mateo", "Aliberti", "43.303.613");
+		// Ejercitación
+		try {
+			c.inscribirParticipante(p1, fechaInscripcion); // Fecha entre el rango de inicio y de fin
+		} catch (AppException e) {
+			System.out.println(e.getMessage());
+		}
+		// Verificacion
+		assertEquals(0, p1.puntaje());
+		assertEquals(true, c.estaInscripto(p1));
 	}
 
 }
