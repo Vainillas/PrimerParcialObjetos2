@@ -45,7 +45,7 @@ public class RestaurantTest {
 
 		// Verificación
 		double p = 3859.8;
-		assertEquals(p, pago1.getTotal());
+		assertEquals(p, pago1.total());
 
 	}
 
@@ -77,7 +77,7 @@ public class RestaurantTest {
 		// $3848.46
 		// Verificación
 		double p = 3848.46;
-		assertEquals(p, pago1.getTotal());
+		assertEquals(p, pago1.total());
 	}
 
 	@Test
@@ -105,7 +105,7 @@ public class RestaurantTest {
 		Pago pago1 = p1.pagarPedido(viedma, 0.05); // $3740 sin descuento | Con propina de 5% se va a $3927
 		// Verificación
 		double p = 3927;
-		assertEquals(p, pago1.getTotal());
+		assertEquals(p, pago1.total());
 	}
 
 	@Test
@@ -137,7 +137,7 @@ public class RestaurantTest {
 		// de 5% se va a $4266.465
 		// Verificación
 		double p = 4266.465;
-		assertEquals(p, pago1.getTotal());
+		assertEquals(p, pago1.total());
 	}
 
 }

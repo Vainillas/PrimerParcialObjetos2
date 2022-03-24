@@ -8,27 +8,19 @@ public class Pago {
 	public Pago(TarjetaCredito formaPago, Pedido pedidoAsociado, double propina) {
 		this.formaPago = formaPago;
 		this.pedidoAsoc = pedidoAsociado;
-		total = Descuento();
-		total = total + Propina(propina);
+		total = descuento();
+		total = total + propina(propina);
 	}
 
-	public double Descuento() {
+	public double descuento() {
 		return formaPago.aplicarDescuento(pedidoAsoc.totalComidaPedido(), pedidoAsoc.totalBebidasPedido());
 	}
 
-	public double Propina(double propina) {
+	public double propina(double propina) {
 		return (total * propina);
 	}
 
-	public TarjetaCredito getFormaPago() {
-		return formaPago;
-	}
-
-	public Pedido getPedidoAsoc() {
-		return pedidoAsoc;
-	}
-
-	public double getTotal() {
+	public double total() {
 		return total;
 	}
 

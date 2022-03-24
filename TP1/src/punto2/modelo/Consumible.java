@@ -9,10 +9,6 @@ public class Consumible {
 		this.precio = precio;
 	}
 
-	public String nombre() {
-		return nombre;
-	}
-
 	public double precio() {
 		return precio;
 	}
