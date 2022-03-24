@@ -2,8 +2,6 @@ package punto2.modelo;
 
 import java.util.ArrayList;
 
-import punto2.exception.StateException;
-
 public class Pedido {
 	private ArrayList<Bebida> listaBebida;
 	private ArrayList<Comida> listaComida;
@@ -82,7 +80,7 @@ public class Pedido {
 		return total;
 	}
 
-	public void confirmarPedido() throws StateException {
+	public void confirmarPedido() {
 		estado.confirmar();
 	}
 

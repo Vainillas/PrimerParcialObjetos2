@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import punto2.exception.StateException;
 import punto2.modelo.Bebida;
 import punto2.modelo.Comida;
 import punto2.modelo.Pago;
@@ -18,7 +17,7 @@ import punto2.modelo.TarjetaVisa;
 
 public class RestaurantTest {
 	@Test
-	public void testTarjetaMastercard() throws StateException {
+	public void testTarjetaMastercard() {
 		// Inicialización
 		Bebida b1 = new Bebida("Coca Cola 500ml", 120);
 		Bebida b2 = new Bebida("Aquarius 150ml", 70);
@@ -51,7 +50,7 @@ public class RestaurantTest {
 	}
 
 	@Test
-	public void testTarjetaComarcaPlus() throws StateException {
+	public void testTarjetaComarcaPlus() {
 		// Inicialización
 		Bebida b1 = new Bebida("Coca Cola 500ml", 120);
 		Bebida b2 = new Bebida("Aquarius 150ml", 70);
@@ -82,7 +81,7 @@ public class RestaurantTest {
 	}
 
 	@Test
-	public void testTarjetaViedma() throws StateException {
+	public void testTarjetaViedma() {
 		// Inicialización
 		Bebida b1 = new Bebida("Coca Cola 500ml", 120);
 		Bebida b2 = new Bebida("Aquarius 150ml", 70);
@@ -110,7 +109,7 @@ public class RestaurantTest {
 	}
 
 	@Test
-	public void testTarjetaVisa() throws StateException {
+	public void testTarjetaVisa() {
 		// Inicialización
 		Bebida b1 = new Bebida("Coca Cola 500ml", 120);
 		Bebida b2 = new Bebida("Aquarius 150ml", 70);

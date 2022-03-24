@@ -7,6 +7,7 @@ import punto1.exception.AppException;
 
 public class Concurso { // Eliminados los setters de concurso
 						// Renombrados los getters
+						// Eliminados los getters que no se usaban en el test
 	public static final int puntosExtra = 10;
 	private String nombre;
 	private ArrayList<Participante> listaParticipantes;
@@ -59,26 +60,6 @@ public class Concurso { // Eliminados los setters de concurso
 
 	public boolean estaInscripto(Participante p) {
 		return listaParticipantes.contains(p);
-	}
-
-	public String nombre() {
-		return nombre;
-	}
-
-	public ArrayList<Participante> listaParticipantes() {
-		return listaParticipantes;
-	}
-
-	public LocalDate fechaInicio() {
-		return fechaInicio;
-	}
-
-	public LocalDate fechaFin() {
-		return fechaFin;
-	}
-
-	public static int puntosExtra() {
-		return puntosExtra;
 	}
 
 }

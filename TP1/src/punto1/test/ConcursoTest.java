@@ -57,11 +57,7 @@ public class ConcursoTest { // Creado un metodo para su respectivo test
 		Concurso c = new Concurso("Concurso de dibujo", fechaIni, fechaFin);
 		Participante p1 = new Participante("Mateo", "Aliberti", "43.303.613");
 		// Ejercitación
-		try {
-			c.inscribirParticipante(p1, fechaInscripcion); // Fecha entre el rango de inicio y de fin
-		} catch (AppException e) {
-			System.out.println(e.getMessage());
-		}
+		c.inscribirParticipante(p1, fechaInscripcion); // Fecha entre el rango de inicio y de fin
 		// Verificacion
 		assertEquals(0, p1.puntaje());
 		assertEquals(true, c.estaInscripto(p1));

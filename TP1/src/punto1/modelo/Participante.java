@@ -6,6 +6,7 @@ public class Participante {
 	private String dni;
 	private int puntaje; // Eliminados los setters de participante
 							// Renombrados los getters
+	// Eliminados los getters que no se usaban en el test
 
 	public Participante(String nombre, String apellido, String dni) {
 		this.nombre = nombre;
@@ -16,18 +17,6 @@ public class Participante {
 
 	public void sumarPuntaje(int puntosextra) {
 		this.puntaje = puntaje + puntosextra;
-	}
-
-	public String nombre() {
-		return nombre;
-	}
-
-	public String apellido() {
-		return apellido;
-	}
-
-	public String dni() {
-		return dni;
 	}
 
 	public int puntaje() {
