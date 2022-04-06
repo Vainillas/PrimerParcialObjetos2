@@ -5,9 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import tp2p1.modelo.RegistroDeInscripcion;
-import tp2p2.modelo.RegistroDePago;
 
-public class RegistroInscripcionEnDisco implements RegistroDeInscripcion, RegistroDePago {
+public class RegistroInscripcionEnDisco implements RegistroDeInscripcion {
 	private File archivoDestino;
 
 	public RegistroInscripcionEnDisco(File archivoDestino) {

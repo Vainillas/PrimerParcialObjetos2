@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import tp2.persistencia.RegistroInscripcionEnDisco;
+import tp2.persistencia.RegistroPagoEnDisco;
 import tp2p2.modelo.Bebida;
 import tp2p2.modelo.Comida;
 import tp2p2.modelo.Pago;
@@ -20,7 +20,7 @@ import tp2p2.modelo.TarjetaVisa;
 
 public class RestauranteTestRegistroArchivo {
 	File archivoDestino = new File("C:\\Mateo\\Universidad\\OO2\\TP2 punto 2.txt");
-	RegistroDePago registro = new RegistroInscripcionEnDisco(archivoDestino);
+	RegistroDePago registro = new RegistroPagoEnDisco(archivoDestino);
 
 	@Test
 	public void testTarjetaMastercard() {

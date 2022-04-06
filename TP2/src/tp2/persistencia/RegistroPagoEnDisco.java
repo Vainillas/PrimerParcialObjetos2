@@ -16,7 +16,7 @@ public class RegistroPagoEnDisco implements RegistroDePago {
 	public void registrar(String registro) {
 		try {
 			FileWriter myWriter = new FileWriter(this.archivoDestino, true);
-			myWriter.write(registro);
+			myWriter.write(registro + "\n");
 			myWriter.close();
 		} catch (IOException e) {
 			e.printStackTrace();

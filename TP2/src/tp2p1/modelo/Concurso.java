@@ -32,7 +32,7 @@ public class Concurso { // Eliminados los setters de concurso
 
 	String datosARegistrar(LocalDate fecha, Participante participante) {
 		return fecha.getDayOfMonth() + "/" + fecha.getMonthValue() + "/" + fecha.getYear() + ", " + participante.dni()
-				+ ", " + this.nombre + "\n";
+				+ ", " + this.nombre;
 
 	}
 
