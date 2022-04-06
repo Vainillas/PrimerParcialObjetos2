@@ -2,23 +2,25 @@ package tp2p2.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.junit.Test;
 
-import tp2.persistencia.RegistroPagoEnBaseDeDatos;
 import tp2p2.modelo.Bebida;
 import tp2p2.modelo.Comida;
 import tp2p2.modelo.Pago;
 import tp2p2.modelo.Pedido;
-import tp2p2.modelo.RegistroDePago;
 import tp2p2.modelo.TarjetaComarcaPlus;
 import tp2p2.modelo.TarjetaMastercard;
 import tp2p2.modelo.TarjetaViedma;
 import tp2p2.modelo.TarjetaVisa;
 
-public class RestauranteTestRegistroBaseDeDatos {
-	RegistroDePago registro = new RegistroPagoEnBaseDeDatos();
+public class RestauranteTestRegistro {
+	StubObjectRestaurante registro = new StubObjectRestaurante();
+	// Como hacer para no tener que cambiar la clase de la variable 'registro'?
+	// Si lo dejo con la interfaz RegistroDePago no puedo llamar al metodo
+	// registro()
 
 	@Test
 	public void testTarjetaMastercard() {
@@ -44,13 +46,17 @@ public class RestauranteTestRegistroBaseDeDatos {
 		TarjetaMastercard mastercard = new TarjetaMastercard();
 
 		// Ejercitación
-		Pago pago1 = p1.pagarPedido(mastercard, 0.05, registro); // $3136 platos con descuento del 2% + $540 = 3676
-																	// |
+		Pago pago1 = p1.pagarPedido(mastercard, 0.05, registro); // $3136 platos con descuento del 2% + $540 = 3676 |
 																	// Con propina
 		// de 5% se va a $3859.8
 
 		// Verificación
+
 		double resultadoPago = 3859.8;
+		LocalDate fecha = LocalDate.now();
+		String resultadoRegistro = fecha.getDayOfMonth() + "/" + fecha.getMonthValue() + "/" + fecha.getYear()
+				+ " || 3859.8";
+		assertEquals(resultadoRegistro, registro.registro());
 		assertEquals(resultadoPago, pago1.total());
 
 	}
@@ -79,12 +85,15 @@ public class RestauranteTestRegistroBaseDeDatos {
 		TarjetaComarcaPlus comarcaPlus = new TarjetaComarcaPlus();
 
 		// Ejercitación
-		Pago pago1 = p1.pagarPedido(comarcaPlus, 0.05, registro); // $3665.2 con descuento de 2% | Con propina de
-																	// 5% se
+		Pago pago1 = p1.pagarPedido(comarcaPlus, 0.05, registro); // $3665.2 con descuento de 2% | Con propina de 5% se
 																	// va a
 		// $3848.46
 		// Verificación
 		double resultadoPago = 3848.46;
+		LocalDate fecha = LocalDate.now();
+		String resultadoRegistro = fecha.getDayOfMonth() + "/" + fecha.getMonthValue() + "/" + fecha.getYear()
+				+ " || 3848.46";
+		assertEquals(resultadoRegistro, registro.registro());
 		assertEquals(resultadoPago, pago1.total());
 	}
 
@@ -110,10 +119,13 @@ public class RestauranteTestRegistroBaseDeDatos {
 		p1.confirmarPedido();
 		TarjetaViedma viedma = new TarjetaViedma();
 		// Ejercitación
-		Pago pago1 = p1.pagarPedido(viedma, 0.05, registro); // $3740 sin descuento | Con propina de 5% se va a
-																// $3927
+		Pago pago1 = p1.pagarPedido(viedma, 0.05, registro); // $3740 sin descuento | Con propina de 5% se va a $3927
 		// Verificación
 		double resultadoPago = 3927;
+		LocalDate fecha = LocalDate.now();
+		String resultadoRegistro = fecha.getDayOfMonth() + "/" + fecha.getMonthValue() + "/" + fecha.getYear()
+				+ " || 3927.0";
+		assertEquals(resultadoRegistro, registro.registro());
 		assertEquals(resultadoPago, pago1.total());
 	}
 
@@ -142,12 +154,15 @@ public class RestauranteTestRegistroBaseDeDatos {
 		p1.confirmarPedido();
 		TarjetaVisa visa = new TarjetaVisa();
 		// Ejercitación
-		Pago pago1 = p1.pagarPedido(visa, 0.05, registro); // $863.3 bebidas con descuento del 3% + $3200 = $4063.3
-															// |
-		// Con propina
+		Pago pago1 = p1.pagarPedido(visa, 0.05, registro); // $863.3 bebidas con descuento del 3% + $3200 = $4063.3 |
+															// Con propina
 		// de 5% se va a $4266.465
 		// Verificación
 		double resultadoPago = 4266.465;
+		LocalDate fecha = LocalDate.now();
+		String resultadoRegistro = fecha.getDayOfMonth() + "/" + fecha.getMonthValue() + "/" + fecha.getYear()
+				+ " || 4266.465";
+		assertEquals(resultadoRegistro, registro.registro());
 		assertEquals(resultadoPago, pago1.total());
 	}
 

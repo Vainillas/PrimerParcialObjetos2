@@ -30,8 +30,7 @@ public class Pago {
 
 	String datosARegistrar() {
 		LocalDate fecha = LocalDate.now();
-		return fecha.getDayOfMonth() + "/" + fecha.getMonthValue() + "/" + fecha.getYear() + " || " + this.total()
-				+ "\n";
+		return fecha.getDayOfMonth() + "/" + fecha.getMonthValue() + "/" + fecha.getYear() + " || " + this.total();
 	}
 
 	public void archivar() {
