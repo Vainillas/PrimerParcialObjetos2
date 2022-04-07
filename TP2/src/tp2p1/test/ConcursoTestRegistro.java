@@ -33,8 +33,9 @@ public class ConcursoTestRegistro { // Creado un metodo para su respectivo test
 		// Verificacion
 		assertEquals(10, p1.puntaje());
 		assertEquals(true, c.estaInscripto(p1));
-		assertEquals("Optional[13/3/2022, 43.303.613, Concurso de dibujo]", registro.registro());
-		// No entiendo porqué tira error el assertEquals si son iguales los Strings¿?
+		Optional<String> variableTest = registro.registro();
+		assertEquals("13/3/2022, 43.303.613, Concurso de dibujo", variableTest.get());
+
 	}
 
 	@Test
@@ -52,7 +53,8 @@ public class ConcursoTestRegistro { // Creado un metodo para su respectivo test
 		// Verificacion
 		assertEquals(0, p1.puntaje());
 		assertEquals(false, c.estaInscripto(p1));
-		assertEquals(Optional.empty(), registro.registro());
+		Optional<String> variableTest = registro.registro();
+		assertEquals(true, variableTest.isEmpty());
 	}
 
 	@Test
@@ -67,7 +69,8 @@ public class ConcursoTestRegistro { // Creado un metodo para su respectivo test
 		// Verificacion
 		assertEquals(0, p1.puntaje());
 		assertEquals(true, c.estaInscripto(p1));
-		assertEquals("Optional[17/3/2022, 43.303.613, Concurso de dibujo]", registro.registro());
+		Optional<String> variableTest = registro.registro();
+		assertEquals("17/3/2022, 43.303.613, Concurso de dibujo", variableTest.get());
 	}
 
 }
