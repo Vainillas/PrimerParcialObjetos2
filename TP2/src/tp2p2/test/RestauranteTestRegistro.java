@@ -40,14 +40,14 @@ public class RestauranteTestRegistro {
 		listaBebidas.add(b1);
 		listaBebidas.add(b2);
 		listaBebidas.add(b3);
-		Pedido p1 = new Pedido(listaBebidas, listaComidas);
+		Pedido p1 = new Pedido(listaBebidas, listaComidas, registro);
 		p1.confirmarPedido();
 
 		TarjetaMastercard mastercard = new TarjetaMastercard();
 
 		// Ejercitación
-		Pago pago1 = p1.pagarPedido(mastercard, 0.05, registro); // $3136 platos con descuento del 2% + $540 = 3676 |
-																	// Con propina
+		Pago pago1 = p1.pagarPedido(mastercard, 0.05); // $3136 platos con descuento del 2% + $540 = 3676 |
+														// Con propina
 		// de 5% se va a $3859.8
 
 		// Verificación
@@ -79,14 +79,14 @@ public class RestauranteTestRegistro {
 		listaBebidas.add(b1);
 		listaBebidas.add(b2);
 		listaBebidas.add(b3);
-		Pedido p1 = new Pedido(listaBebidas, listaComidas);
+		Pedido p1 = new Pedido(listaBebidas, listaComidas, registro);
 		p1.confirmarPedido();
 
 		TarjetaComarcaPlus comarcaPlus = new TarjetaComarcaPlus();
 
 		// Ejercitación
-		Pago pago1 = p1.pagarPedido(comarcaPlus, 0.05, registro); // $3665.2 con descuento de 2% | Con propina de 5% se
-																	// va a
+		Pago pago1 = p1.pagarPedido(comarcaPlus, 0.05); // $3665.2 con descuento de 2% | Con propina de 5% se
+														// va a
 		// $3848.46
 		// Verificación
 		double resultadoPago = 3848.46;
@@ -115,11 +115,11 @@ public class RestauranteTestRegistro {
 		listaBebidas.add(b1);
 		listaBebidas.add(b2);
 		listaBebidas.add(b3);
-		Pedido p1 = new Pedido(listaBebidas, listaComidas);
+		Pedido p1 = new Pedido(listaBebidas, listaComidas, registro);
 		p1.confirmarPedido();
 		TarjetaViedma viedma = new TarjetaViedma();
 		// Ejercitación
-		Pago pago1 = p1.pagarPedido(viedma, 0.05, registro); // $3740 sin descuento | Con propina de 5% se va a $3927
+		Pago pago1 = p1.pagarPedido(viedma, 0.05); // $3740 sin descuento | Con propina de 5% se va a $3927
 		// Verificación
 		double resultadoPago = 3927;
 		LocalDate fecha = LocalDate.now();
@@ -150,12 +150,12 @@ public class RestauranteTestRegistro {
 		listaBebidas.add(b3); // Tuve que agregar otra bebida porque el calculo me daba con muchísimos
 								// decimales y el assert
 								// daba false por eso.
-		Pedido p1 = new Pedido(listaBebidas, listaComidas);
+		Pedido p1 = new Pedido(listaBebidas, listaComidas, registro);
 		p1.confirmarPedido();
 		TarjetaVisa visa = new TarjetaVisa();
 		// Ejercitación
-		Pago pago1 = p1.pagarPedido(visa, 0.05, registro); // $863.3 bebidas con descuento del 3% + $3200 = $4063.3 |
-															// Con propina
+		Pago pago1 = p1.pagarPedido(visa, 0.05); // $863.3 bebidas con descuento del 3% + $3200 = $4063.3 |
+													// Con propina
 		// de 5% se va a $4266.465
 		// Verificación
 		double resultadoPago = 4266.465;

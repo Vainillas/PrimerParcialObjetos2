@@ -3,6 +3,7 @@ package tp2p2.modelo;
 import java.util.ArrayList;
 
 public class Pedido {
+	private RegistroDePago registro;
 	private ArrayList<Bebida> listaBebida;
 	private ArrayList<Comida> listaComida;
 	private Estado estado;
@@ -15,8 +16,9 @@ public class Pedido {
 		pagado = false;
 	}
 
-	public Pedido(ArrayList<Bebida> listaBebida, ArrayList<Comida> listaComida) {
+	public Pedido(ArrayList<Bebida> listaBebida, ArrayList<Comida> listaComida, RegistroDePago registro) {
 		this();
+		this.registro = registro;
 		this.listaComida = listaComida;
 		this.listaBebida = listaBebida;
 	}
@@ -92,7 +94,7 @@ public class Pedido {
 		return this.estado.pendiente();
 	}
 
-	public Pago pagarPedido(TarjetaCredito formaPago, double propina, RegistroDePago registro) {
+	public Pago pagarPedido(TarjetaCredito formaPago, double propina) {
 		Pago p = null;
 		if (this.confirmado() && pagado == false) {
 			p = new Pago(formaPago, this, propina, registro);
