@@ -1,6 +1,5 @@
 package ar.unrn.tp3.ej2.correo;
 
-import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -12,7 +11,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import ar.unrn.tp3.ej2.modelo.EmisorDeCorreo;
-import ar.unrn.tp3.ej2.modelo.Empleado;
 import ar.unrn.tp3.ej2.modelo.Mensaje;
 import ar.unrn.tp3.ej2.modelo.ProveedorDeFecha;
 import ar.unrn.tp3.ej2.modelo.Usuario;
@@ -24,7 +22,7 @@ public class EmailManager implements EmisorDeCorreo {
 		this.proveedor = proveedor;
 	}
 
-	public boolean enviarCorreoCumpleaños(List<Empleado> listaEmpleados) {
+	public boolean enviarCorreoCumpleaños(String correoEmpleado) throws MessagingException {
 		String correoCompañia = "compañia@company.com";
 		Usuario user = new Usuario("223a00067bab3f", "7403366672282e");
 		Mensaje msg = new Mensaje("Feliz Cumpleaños", "Le deseamos un muy feliz cumpleaños. \nAtt: La compañia.");
@@ -41,34 +39,26 @@ public class EmailManager implements EmisorDeCorreo {
 				return new PasswordAuthentication(user.usuario(), user.contraseña());
 			}
 		});
-		try {
-			for (Empleado e : listaEmpleados) {
-				if (e.evaluarCumpleaños(proveedor.generarFecha())) {
-					// Create a default MimeMessage object.
-					Message message = new MimeMessage(session);
 
-					// Set From: header field
-					message.setFrom(new InternetAddress(correoCompañia));
+		Message message = new MimeMessage(session);
 
-					// Set To: header field
-					message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(e.correoElectronico()));
+		// Set From: header field
+		message.setFrom(new InternetAddress(correoCompañia));
 
-					// Set Subject: header field
-					message.setSubject(msg.asunto());
+		// Set To: header field
+		message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(correoEmpleado));
 
-					// Put the content of your message
-					message.setText(msg.cuerpo());
+		// Set Subject: header field
+		message.setSubject(msg.asunto());
 
-					// Send message
-					Transport.send(message);
-				}
+		// Put the content of your message
+		message.setText(msg.cuerpo());
 
-			}
-			return true;
+		// Send message
+		Transport.send(message);
 
-		} catch (MessagingException e) {
-			throw new RuntimeException(e);
-		}
+		return true;
+
 	}
 
 }

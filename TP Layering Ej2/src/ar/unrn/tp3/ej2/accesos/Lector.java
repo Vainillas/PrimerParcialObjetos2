@@ -10,14 +10,15 @@ import ar.unrn.tp3.ej2.modelo.Empleado;
 import ar.unrn.tp3.ej2.modelo.LectorArchivo;
 
 public class Lector implements LectorArchivo {
-	// private EmisorDeCorreo correo;
-	/*
-	 * public Lector(EmisorDeCorreo correo) { this.correo = correo; }
-	 */
+	private String pathArchivo;
 
-	public List<Empleado> empleadosCumpleaños(String filename) throws IOException {
+	public Lector(String filename) {
+		this.pathArchivo = filename;
+	}
 
-		List<String> fileData = Files.readAllLines(Paths.get(filename));
+	public List<Empleado> leerArchivo() throws IOException {
+
+		List<String> fileData = Files.readAllLines(Paths.get(pathArchivo));
 		fileData.remove(0);
 		ArrayList<Empleado> listaEmpleados = new ArrayList<>();
 
@@ -25,7 +26,6 @@ public class Lector implements LectorArchivo {
 			String[] camposFila = s.split(",");
 			listaEmpleados.add(new Empleado(camposFila[0], camposFila[1], camposFila[2], camposFila[3]));
 		}
-		// correo.enviarCorreoCumpleaños(listaEmpleados);
 		return listaEmpleados;
 
 	}

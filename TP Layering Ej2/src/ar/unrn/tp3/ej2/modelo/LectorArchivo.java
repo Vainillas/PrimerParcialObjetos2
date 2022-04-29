@@ -4,5 +4,5 @@ import java.io.IOException;
 import java.util.List;
 
 public interface LectorArchivo {
-	public List<Empleado> empleadosCumpleaños(String filename) throws IOException;
+	public List<Empleado> leerArchivo() throws IOException;
 }
