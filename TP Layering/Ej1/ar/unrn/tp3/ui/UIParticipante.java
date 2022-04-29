@@ -9,13 +9,14 @@ import java.sql.SQLException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import ar.unrn.tp3.modelo.Participante;
+import ar.unrn.tp3.modelo.Region;
 import ar.unrn.tp3.modelo.RepositorioDeParticipantes;
+import ar.unrn.tp3.modelo.Telefono;
 
 public class UIParticipante extends JFrame {
 	private JTextField nombre;
@@ -64,28 +65,8 @@ public class UIParticipante extends JFrame {
 	}
 
 	private void onBotonCargar() throws SQLException {
-		if (nombre.getText().equals("")) {
-			JOptionPane.showMessageDialog(this, "Debe cargar un nombre");
-			return;
-		}
-		if (telefono.getText().equals("")) {
-			JOptionPane.showMessageDialog(this, "Debe cargar un telefono");
-			return;
-		}
-		if (!validarTelefono(telefono.getText())) {
-			JOptionPane.showMessageDialog(this, "El teléfono debe ingresarse de la siguiente forma: NNNN-NNNNNN");
-			return;
-		}
-		if (!region.getText().equals("China") && !region.getText().equals("US") && !region.getText().equals("Europa")) {
-			JOptionPane.showMessageDialog(this, "Region desconocida. Las conocidas son: China, US, Europa");
-			return;
-		}
-		repositorio.nuevoParticipante(new Participante(nombre.getText(), telefono.getText(), region.getText()));
-	}
-
-	private boolean validarTelefono(String telefono) {
-		String regex = "\\d{4}-\\d{6}";
-		return telefono.matches(regex);
+		repositorio.nuevoParticipante(
+				new Participante(nombre.getText(), new Telefono(telefono.getText()), new Region(region.getText())));
 	}
 
 }

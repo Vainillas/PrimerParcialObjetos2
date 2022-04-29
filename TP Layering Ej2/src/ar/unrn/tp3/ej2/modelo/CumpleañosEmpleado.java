@@ -14,14 +14,9 @@ public class CumpleañosEmpleado {
 		this.lector = lector;
 		this.emisor = emisor;
 		this.proveedorFecha = proveedorFecha;
-		try {
-			this.enviarFelicitaciones();
-		} catch (IOException e) {
-			throw new RuntimeException(e.getMessage());
-		}
 	}
 
-	private void enviarFelicitaciones() throws IOException {
+	public void enviarFelicitaciones() throws IOException {
 		List<Empleado> empleados = lector.leerArchivo();
 
 		for (Empleado e : empleados) {

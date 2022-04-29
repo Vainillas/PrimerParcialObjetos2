@@ -24,8 +24,8 @@ public class JDBCParticipante implements RepositorioDeParticipantes {
 				.prepareStatement("insert into participantes(nombre, telefono, region) values(?,?,?)");
 		try {
 			st.setString(1, p.nombre());
-			st.setString(2, p.telefono());
-			st.setString(3, p.region());
+			st.setString(2, p.telefono().telefono()); // Como corregir los dos puntos
+			st.setString(3, p.region().region());
 			st.executeUpdate();
 		} finally {
 			st.close();
