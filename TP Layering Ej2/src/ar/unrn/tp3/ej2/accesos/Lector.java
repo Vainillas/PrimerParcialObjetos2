@@ -7,16 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ar.unrn.tp3.ej2.modelo.Empleado;
-import ar.unrn.tp3.ej2.modelo.LectorArchivo;
+import ar.unrn.tp3.ej2.modelo.Empleados;
 
-public class Lector implements LectorArchivo {
+public class Lector implements Empleados {
 	private String pathArchivo;
 
 	public Lector(String filename) {
 		this.pathArchivo = filename;
 	}
 
-	public List<Empleado> leerArchivo() throws IOException {
+	public List<Empleado> leer() throws IOException {
 
 		List<String> fileData = Files.readAllLines(Paths.get(pathArchivo));
 		fileData.remove(0);

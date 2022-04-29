@@ -6,20 +6,19 @@ import java.util.List;
 import javax.mail.MessagingException;
 
 public class CumpleañosEmpleado {
-	private LectorArchivo lector;
+	private Empleados empleados;
 	private EmisorDeCorreo emisor;
 	private ProveedorDeFecha proveedorFecha;
 
-	public CumpleañosEmpleado(LectorArchivo lector, EmisorDeCorreo emisor, ProveedorDeFecha proveedorFecha) {
-		this.lector = lector;
+	public CumpleañosEmpleado(Empleados empleados, EmisorDeCorreo emisor, ProveedorDeFecha proveedorFecha) {
+		this.empleados = empleados;
 		this.emisor = emisor;
 		this.proveedorFecha = proveedorFecha;
 	}
 
-	public void enviarFelicitaciones() throws IOException {
-		List<Empleado> empleados = lector.leerArchivo();
-
-		for (Empleado e : empleados) {
+	public boolean enviarFelicitaciones() throws IOException {
+		List<Empleado> listaEmpleados = empleados.leer();
+		for (Empleado e : listaEmpleados) {
 			if (e.evaluarCumpleaños(proveedorFecha.generarFecha())) {
 				try {
 					emisor.enviarCorreoCumpleaños(e.correoElectronico());
@@ -28,6 +27,7 @@ public class CumpleañosEmpleado {
 				}
 			}
 		}
+		return true;
 	}
 
 }
