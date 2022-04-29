@@ -12,9 +12,9 @@ public class JDBCParticipante implements RepositorioDeParticipantes {
 	private Connection dbConn;
 
 	public void setupBaseDeDatos() throws SQLException {
-		String url = "jdbc:derby://localhost:1527/participantes";
-		String user = "app";
-		String password = "app";
+		String url = "jdbc:mysql://localhost:3306/objetos2_tp1";
+		String user = "root";
+		String password = "";
 		this.dbConn = DriverManager.getConnection(url, user, password);
 	}
 
