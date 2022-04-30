@@ -1,14 +1,16 @@
 package ar.unrn.tp3.ej3.main;
 
+import java.sql.SQLException;
+
 import javax.swing.SwingUtilities;
 
-import ar.unrn.tp3.ej3.accesos.ArchivoConcursos;
+import ar.unrn.tp3.ej3.accesos.JDBCConcursos;
 import ar.unrn.tp3.ej3.modelo.RepositorioConcursos;
+import ar.unrn.tp3.ej3.ui.RadioCompetition;
 
 public class Main {
-	public static void main(String[] args) {
-		RepositorioConcursos repo = new ArchivoConcursos("C:\\Mateo\\Universidad\\OO2\\concursosLayering.txt",
-				"C:\\Mateo\\Universidad\\OO2\\inscriptosLayering.txt");
+	public static void main(String[] args) throws SQLException {
+		RepositorioConcursos repo = new JDBCConcursos();
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {

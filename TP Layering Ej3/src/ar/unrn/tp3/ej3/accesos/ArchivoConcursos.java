@@ -14,12 +14,13 @@ import ar.unrn.tp3.ej3.modelo.Concurso;
 import ar.unrn.tp3.ej3.modelo.RepositorioConcursos;
 
 public class ArchivoConcursos implements RepositorioConcursos {
+
 	private String pathConcursos;
 	private String pathInscriptos;
 
-	public ArchivoConcursos(String pathConcursos, String pathInscriptos) {
-		this.pathConcursos = pathConcursos;
-		this.pathInscriptos = pathInscriptos;
+	public ArchivoConcursos() {
+		this.pathConcursos = "C:\\Mateo\\Universidad\\OO2\\concursosLayering.txt";
+		this.pathInscriptos = "C:\\Mateo\\Universidad\\OO2\\inscriptosLayering.txt";
 	}
 
 	public List<Concurso> concursos() throws IOException {

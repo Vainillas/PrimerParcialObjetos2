@@ -1,4 +1,4 @@
-package ar.unrn.tp3.ej3.main;
+package ar.unrn.tp3.ej3.ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -96,7 +96,6 @@ public class RadioCompetition {
 			for (Concurso c : repositorio.concursos()) {
 				c.sumateSi(listaConcursosAbiertos, (con -> con.estaAbierto()));
 			}
-			System.out.print(listaConcursosAbiertos.toString());
 			for (Concurso c : listaConcursosAbiertos) {
 				this.comboBox.addItem(c.nombre());
 			}
