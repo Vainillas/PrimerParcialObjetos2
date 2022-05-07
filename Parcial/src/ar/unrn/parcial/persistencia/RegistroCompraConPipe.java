@@ -1,0 +1,34 @@
+package ar.unrn.parcial.persistencia;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javax.mail.MessagingException;
+
+import ar.unrn.parcial.modelo.Compra;
+import ar.unrn.parcial.modelo.EmisorEmail;
+import ar.unrn.parcial.modelo.RegistroDeCompras;
+
+public class RegistroCompraConPipe implements RegistroDeCompras {
+	private String pathArchivo;
+	private EmisorEmail emailSender;
+
+	public RegistroCompraConPipe(EmisorEmail emailSender) {
+		this.pathArchivo = "C:\\Mateo\\Universidad\\OO2\\RegistroDeCompraDeRemerasPipe.txt";
+		this.emailSender = emailSender;
+	}
+
+	public boolean registrarCompra(Compra compra) throws IOException, MessagingException {
+		FileWriter escritorArchivo = new FileWriter(pathArchivo, true);
+		escritorArchivo.write(compra.datosFechaCompra() + "|" + compra.cantidadRemerasCompradas() + "|"
+				+ compra.obtenerMontoCompra() + "\r\n");
+		escritorArchivo.close();
+		informarCompra(compra);
+		return true;
+	}
+
+	public boolean informarCompra(Compra compra) throws MessagingException {
+		return emailSender.enviarCorreoConfirmacionCompra(String.valueOf(compra.cantidadRemerasCompradas()),
+				compra.datosFechaCompra(), String.valueOf(compra.obtenerMontoCompra()), compra.emailComprador());
+	}
+}
