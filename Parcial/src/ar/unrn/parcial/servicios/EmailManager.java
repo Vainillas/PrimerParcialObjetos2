@@ -14,8 +14,7 @@ import ar.unrn.parcial.modelo.EmisorEmail;
 
 public class EmailManager implements EmisorEmail {
 
-	public boolean enviarCorreoConfirmacionCompra(String cantidad, String fecha, String monto, String correoDestino)
-			throws MessagingException {
+	public boolean enviarCorreoConfirmacionCompra(String cantidad, String fecha, String monto, String correoDestino) {
 		String correoComercio = "blackmarket@sociedadanonima.com";
 		String user = "223a00067bab3f";
 		String contraseña = "7403366672282e";
@@ -36,21 +35,24 @@ public class EmailManager implements EmisorEmail {
 		});
 
 		Message message = new MimeMessage(session);
+		try {
+			// Set From: header field
+			message.setFrom(new InternetAddress(correoComercio));
 
-		// Set From: header field
-		message.setFrom(new InternetAddress(correoComercio));
+			// Set To: header field
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(correoDestino));
 
-		// Set To: header field
-		message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(correoDestino));
+			// Set Subject: header field
+			message.setSubject("Gracias por comprar en BlackMarket");
 
-		// Set Subject: header field
-		message.setSubject("Gracias por comprar en BlackMarket");
+			// Put the content of your message
+			message.setText(mensaje);
 
-		// Put the content of your message
-		message.setText(mensaje);
-
-		// Send message
-		Transport.send(message);
+			// Send message
+			Transport.send(message);
+		} catch (MessagingException e) {
+			throw new RuntimeException(e.getMessage());
+		}
 
 		return true;
 	}

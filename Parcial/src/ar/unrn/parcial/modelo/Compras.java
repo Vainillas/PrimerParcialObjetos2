@@ -1,10 +1,10 @@
 package ar.unrn.parcial.modelo;
 
+import java.io.IOException;
 import java.util.List;
 
 public class Compras implements InterfazCompras {
 
-	@Override
 	public double calcularMontoCompra(int cantidadCompra, InterfazProveedorDeFechas proveedorFechaCompra,
 			Remera remeraComprada) {
 		Compra compra = new Compra(cantidadCompra, proveedorFechaCompra, remeraComprada,
@@ -12,7 +12,6 @@ public class Compras implements InterfazCompras {
 		return compra.obtenerMontoCompra();
 	}
 
-	@Override
 	public Compra crearCompra(int cantidadCompra, InterfazProveedorDeFechas proveedorFechaCompra, Remera remeraComprada,
 			String emailComprador) {
 		return new Compra(cantidadCompra, proveedorFechaCompra, remeraComprada, new Email(emailComprador));
@@ -22,6 +21,11 @@ public class Compras implements InterfazCompras {
 		RemeraLisa rl = new RemeraLisa(proveedorFechaCompra);
 		RemeraEstampada re = new RemeraEstampada(proveedorFechaCompra);
 		return List.of(rl, re);
+	}
+
+	public boolean registrarCompra(Compra compra, RegistroDeCompras registro) throws IOException {
+		registro.registrarCompra(compra);
+		return true;
 	}
 
 }

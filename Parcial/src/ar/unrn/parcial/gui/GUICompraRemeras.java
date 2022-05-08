@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.List;
 
-import javax.mail.MessagingException;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -81,9 +80,9 @@ public class GUICompraRemeras {
 
 	private void registrarCompra(String cantidad, String email) {
 		try {
-			registro.registrarCompra(compras.crearCompra(Integer.parseInt(cantidad), proveedorFechaCompra,
-					listaRemerasDisponibles.get(comboBox.getSelectedIndex()), email));
-		} catch (IOException | NumberFormatException | MessagingException e) {
+			compras.registrarCompra(compras.crearCompra(Integer.parseInt(cantidad), proveedorFechaCompra,
+					listaRemerasDisponibles.get(comboBox.getSelectedIndex()), email), registro);
+		} catch (IOException | NumberFormatException e) {
 			throw new RuntimeException(e.getMessage());
 		}
 

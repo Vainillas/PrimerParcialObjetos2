@@ -1,5 +1,6 @@
 package ar.unrn.parcial.modelo;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface InterfazCompras {
@@ -10,5 +11,7 @@ public interface InterfazCompras {
 			String emailComprador);
 
 	public List<Remera> obtenerRemeras(InterfazProveedorDeFechas proveedorFechaCompra);
+
+	public boolean registrarCompra(Compra compra, RegistroDeCompras registro) throws IOException;
 
 }

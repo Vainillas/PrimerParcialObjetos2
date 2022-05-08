@@ -1,10 +1,12 @@
 package ar.unrn.parcial.test;
 
+import java.io.IOException;
 import java.util.List;
 
 import ar.unrn.parcial.modelo.Compra;
 import ar.unrn.parcial.modelo.InterfazCompras;
 import ar.unrn.parcial.modelo.InterfazProveedorDeFechas;
+import ar.unrn.parcial.modelo.RegistroDeCompras;
 import ar.unrn.parcial.modelo.Remera;
 
 public class StubObjectCompras implements InterfazCompras {
@@ -27,6 +29,12 @@ public class StubObjectCompras implements InterfazCompras {
 	public List<Remera> obtenerRemeras(InterfazProveedorDeFechas proveedorFechaCompra) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean registrarCompra(Compra compra, RegistroDeCompras registro) throws IOException {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

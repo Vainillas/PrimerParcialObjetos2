@@ -2,18 +2,16 @@ package ar.unrn.parcial.test;
 
 import java.io.IOException;
 
-import javax.mail.MessagingException;
-
 import ar.unrn.parcial.modelo.Compra;
 import ar.unrn.parcial.modelo.RegistroDeCompras;
 
 public class StubObjectRegistro implements RegistroDeCompras {
 
-	public boolean registrarCompra(Compra compra) throws IOException, MessagingException {
+	public boolean registrarCompra(Compra compra) throws IOException {
 		return true;
 	}
 
-	public boolean informarCompra(Compra compra) throws MessagingException {
+	public boolean informarCompra(Compra compra) {
 		return true;
 	}
 

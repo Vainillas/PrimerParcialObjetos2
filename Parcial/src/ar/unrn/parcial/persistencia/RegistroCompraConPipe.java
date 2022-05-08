@@ -3,8 +3,6 @@ package ar.unrn.parcial.persistencia;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import javax.mail.MessagingException;
-
 import ar.unrn.parcial.modelo.Compra;
 import ar.unrn.parcial.modelo.EmisorEmail;
 import ar.unrn.parcial.modelo.RegistroDeCompras;
@@ -18,7 +16,7 @@ public class RegistroCompraConPipe implements RegistroDeCompras {
 		this.emailSender = emailSender;
 	}
 
-	public boolean registrarCompra(Compra compra) throws IOException, MessagingException {
+	public boolean registrarCompra(Compra compra) throws IOException {
 		FileWriter escritorArchivo = new FileWriter(pathArchivo, true);
 		escritorArchivo.write(compra.datosFechaCompra() + "|" + compra.cantidadRemerasCompradas() + "|"
 				+ compra.obtenerMontoCompra() + "\r\n");
@@ -27,7 +25,7 @@ public class RegistroCompraConPipe implements RegistroDeCompras {
 		return true;
 	}
 
-	public boolean informarCompra(Compra compra) throws MessagingException {
+	public boolean informarCompra(Compra compra) {
 		return emailSender.enviarCorreoConfirmacionCompra(String.valueOf(compra.cantidadRemerasCompradas()),
 				compra.datosFechaCompra(), String.valueOf(compra.obtenerMontoCompra()), compra.emailComprador());
 	}
