@@ -12,6 +12,7 @@ public interface InterfazCompras {
 
 	public List<Remera> obtenerRemeras(InterfazProveedorDeFechas proveedorFechaCompra);
 
-	public boolean registrarCompra(Compra compra, RegistroDeCompras registro) throws IOException;
+	public boolean registrarCompra(int cantidadCompra, InterfazProveedorDeFechas proveedorFechaCompra,
+			Remera remeraComprada, String emailComprador, RegistroDeCompras registro) throws IOException;
 
 }

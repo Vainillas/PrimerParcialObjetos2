@@ -23,7 +23,9 @@ public class Compras implements InterfazCompras {
 		return List.of(rl, re);
 	}
 
-	public boolean registrarCompra(Compra compra, RegistroDeCompras registro) throws IOException {
+	public boolean registrarCompra(int cantidadCompra, InterfazProveedorDeFechas proveedorFechaCompra,
+			Remera remeraComprada, String emailComprador, RegistroDeCompras registro) throws IOException {
+		Compra compra = crearCompra(cantidadCompra, proveedorFechaCompra, remeraComprada, emailComprador);
 		registro.registrarCompra(compra);
 		return true;
 	}

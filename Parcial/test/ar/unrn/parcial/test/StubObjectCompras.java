@@ -32,7 +32,8 @@ public class StubObjectCompras implements InterfazCompras {
 	}
 
 	@Override
-	public boolean registrarCompra(Compra compra, RegistroDeCompras registro) throws IOException {
+	public boolean registrarCompra(int cantidadCompra, InterfazProveedorDeFechas proveedorFechaCompra,
+			Remera remeraComprada, String emailComprador, RegistroDeCompras registro) throws IOException {
 		// TODO Auto-generated method stub
 		return false;
 	}
