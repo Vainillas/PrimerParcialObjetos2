@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -82,6 +83,8 @@ public class GUICompraRemeras {
 		try {
 			compras.registrarCompra(compras.crearCompra(Integer.parseInt(cantidad), proveedorFechaCompra,
 					listaRemerasDisponibles.get(comboBox.getSelectedIndex()), email), registro);
+			JOptionPane.showMessageDialog(new JFrame(), "La Venta se ha Realizado con Exito!", "Felicidades",
+					JOptionPane.INFORMATION_MESSAGE);
 		} catch (IOException | NumberFormatException e) {
 			throw new RuntimeException(e.getMessage());
 		}

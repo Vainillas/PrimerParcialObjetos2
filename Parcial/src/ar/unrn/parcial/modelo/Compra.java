@@ -8,10 +8,21 @@ public class Compra {
 
 	public Compra(int cantidadCompra, InterfazProveedorDeFechas proveedorFechaCompra, Remera remeraComprada,
 			Email emailComprador) {
+		validarConstructor(cantidadCompra);
 		this.cantidadCompra = cantidadCompra;
 		this.proveedorFechaCompra = proveedorFechaCompra;
 		this.remeraComprada = remeraComprada;
 		this.emailComprador = emailComprador;
+	}
+
+	private void validarConstructor(int cantidadCompra) {
+		if (!validarCantidad(cantidadCompra)) {
+			throw new RuntimeException("La cantidad de la compra debe ser mayor a 0");
+		}
+	}
+
+	private boolean validarCantidad(int cantidadCompra) {
+		return (cantidadCompra > 0);
 	}
 
 	public double obtenerMontoCompra() {
