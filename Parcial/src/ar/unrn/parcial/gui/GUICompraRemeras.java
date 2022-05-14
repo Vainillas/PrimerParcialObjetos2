@@ -81,8 +81,9 @@ public class GUICompraRemeras {
 
 	private void registrarCompra(String cantidad, String email) {
 		try {
-			compras.registrarCompra(Integer.parseInt(cantidad), proveedorFechaCompra,
-					listaRemerasDisponibles.get(comboBox.getSelectedIndex()), email, registro);
+			int cantidadRemeras = Integer.parseInt(cantidad);
+			Remera tipoRemeraAComprar = listaRemerasDisponibles.get(comboBox.getSelectedIndex());
+			compras.registrarCompra(cantidadRemeras, proveedorFechaCompra, tipoRemeraAComprar, email, registro);
 			JOptionPane.showMessageDialog(new JFrame(), "La Venta se ha Realizado con Exito!", "Felicidades",
 					JOptionPane.INFORMATION_MESSAGE);
 		} catch (IOException | NumberFormatException e) {
@@ -92,8 +93,9 @@ public class GUICompraRemeras {
 	}
 
 	private double obtenerMontoCompra(String cantidad) {
-		return compras.calcularMontoCompra(Integer.parseInt(cantidad), proveedorFechaCompra,
-				listaRemerasDisponibles.get(comboBox.getSelectedIndex()));
+		int cantidadRemeras = Integer.parseInt(cantidad);
+		Remera tipoRemeraAComprar = listaRemerasDisponibles.get(comboBox.getSelectedIndex());
+		return compras.calcularMontoCompra(cantidadRemeras, proveedorFechaCompra, tipoRemeraAComprar);
 	}
 
 	private void tiposDeRemeras() {
