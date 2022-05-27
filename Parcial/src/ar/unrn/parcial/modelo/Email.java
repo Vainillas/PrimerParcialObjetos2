@@ -1,16 +1,18 @@
 package ar.unrn.parcial.modelo;
 
+import java.io.IOException;
+
 public class Email {
 	private String correoElectronico;
 
-	public Email(String correoElectronico) {
+	public Email(String correoElectronico) throws IOException {
 		validarConstructor(correoElectronico);
 		this.correoElectronico = correoElectronico;
 	}
 
-	private boolean validarConstructor(String email) {
+	private boolean validarConstructor(String email) throws IOException {
 		if (!validarCorreo(email))
-			throw new RuntimeException("El email debe ser válido");
+			throw new IOException("El email debe ser válido");
 		return true;
 	}
 

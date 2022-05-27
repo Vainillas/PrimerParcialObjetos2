@@ -5,10 +5,10 @@ import java.util.List;
 
 public interface InterfazCompras {
 	public double calcularMontoCompra(int cantidadCompra, InterfazProveedorDeFechas proveedorFechaCompra,
-			Remera remeraComprada);
+			Remera remeraComprada) throws IOException;
 
 	public Compra crearCompra(int cantidadCompra, InterfazProveedorDeFechas proveedorFechaCompra, Remera remeraComprada,
-			String emailComprador);
+			String emailComprador) throws IOException;
 
 	public List<Remera> obtenerRemeras(InterfazProveedorDeFechas proveedorFechaCompra);
 

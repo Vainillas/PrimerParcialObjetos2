@@ -6,14 +6,14 @@ import java.util.List;
 public class Compras implements InterfazCompras {
 
 	public double calcularMontoCompra(int cantidadCompra, InterfazProveedorDeFechas proveedorFechaCompra,
-			Remera remeraComprada) {
+			Remera remeraComprada) throws IOException {
 		Compra compra = new Compra(cantidadCompra, proveedorFechaCompra, remeraComprada,
 				new Email("email@stubobject.com"));
 		return compra.obtenerMontoCompra();
 	}
 
 	public Compra crearCompra(int cantidadCompra, InterfazProveedorDeFechas proveedorFechaCompra, Remera remeraComprada,
-			String emailComprador) {
+			String emailComprador) throws IOException {
 		return new Compra(cantidadCompra, proveedorFechaCompra, remeraComprada, new Email(emailComprador));
 	}
 
@@ -25,6 +25,7 @@ public class Compras implements InterfazCompras {
 
 	public boolean registrarCompra(int cantidadCompra, InterfazProveedorDeFechas proveedorFechaCompra,
 			Remera remeraComprada, String emailComprador, RegistroDeCompras registro) throws IOException {
+		// El mail se manda desde este método o desde el registro.registrarCompra?
 		Compra compra = crearCompra(cantidadCompra, proveedorFechaCompra, remeraComprada, emailComprador);
 		registro.registrarCompra(compra);
 		return true;

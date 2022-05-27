@@ -7,7 +7,7 @@ public class Compra {
 	private InterfazProveedorDeFechas proveedorFechaCompra;
 
 	public Compra(int cantidadCompra, InterfazProveedorDeFechas proveedorFechaCompra, Remera remeraComprada,
-			Email emailComprador) {
+			Email emailComprador) throws NumberFormatException {
 		validarConstructor(cantidadCompra);
 		this.cantidadCompra = cantidadCompra;
 		this.proveedorFechaCompra = proveedorFechaCompra;
@@ -15,9 +15,9 @@ public class Compra {
 		this.emailComprador = emailComprador;
 	}
 
-	private void validarConstructor(int cantidadCompra) {
+	private void validarConstructor(int cantidadCompra) throws NumberFormatException {
 		if (!validarCantidad(cantidadCompra)) {
-			throw new RuntimeException("La cantidad de la compra debe ser mayor a 0");
+			throw new NumberFormatException("La cantidad de la compra debe ser mayor a 0");
 		}
 	}
 

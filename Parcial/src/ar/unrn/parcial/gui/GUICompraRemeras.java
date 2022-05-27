@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.List;
 
+//Resuelto el import del mail 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -23,7 +24,7 @@ import ar.unrn.parcial.modelo.RegistroDeCompras;
 import ar.unrn.parcial.modelo.Remera;
 
 public class GUICompraRemeras {
-	private RegistroDeCompras registro;
+	private RegistroDeCompras registro; // RegistroDeCompras es una interfaz del modelo
 	private List<Remera> listaRemerasDisponibles;
 	private InterfazProveedorDeFechas proveedorFechaCompra;
 	private InterfazCompras compras;
@@ -81,21 +82,34 @@ public class GUICompraRemeras {
 
 	private void registrarCompra(String cantidad, String email) {
 		try {
-			int cantidadRemeras = Integer.parseInt(cantidad);
+			int cantidadRemeras = Integer.valueOf(cantidad);
 			Remera tipoRemeraAComprar = listaRemerasDisponibles.get(comboBox.getSelectedIndex());
 			compras.registrarCompra(cantidadRemeras, proveedorFechaCompra, tipoRemeraAComprar, email, registro);
 			JOptionPane.showMessageDialog(new JFrame(), "La Venta se ha Realizado con Exito!", "Felicidades",
 					JOptionPane.INFORMATION_MESSAGE);
-		} catch (IOException | NumberFormatException e) {
-			throw new RuntimeException(e.getMessage());
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(new JFrame(), "La cantidad no puede estar vacía", "Error",
+					JOptionPane.ERROR_MESSAGE);
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
 
 	private double obtenerMontoCompra(String cantidad) {
-		int cantidadRemeras = Integer.parseInt(cantidad);
-		Remera tipoRemeraAComprar = listaRemerasDisponibles.get(comboBox.getSelectedIndex());
-		return compras.calcularMontoCompra(cantidadRemeras, proveedorFechaCompra, tipoRemeraAComprar);
+		try {
+			int cantidadRemeras = Integer.valueOf(cantidad);
+			Remera tipoRemeraAComprar = listaRemerasDisponibles.get(comboBox.getSelectedIndex());
+			return compras.calcularMontoCompra(cantidadRemeras, proveedorFechaCompra, tipoRemeraAComprar);
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(new JFrame(), "La cantidad no puede estar vacía", "Error",
+					JOptionPane.ERROR_MESSAGE);
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+		}
+		return 0;
 	}
 
 	private void tiposDeRemeras() {
