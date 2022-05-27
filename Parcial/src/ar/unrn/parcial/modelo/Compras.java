@@ -24,10 +24,13 @@ public class Compras implements InterfazCompras {
 	}
 
 	public boolean registrarCompra(int cantidadCompra, InterfazProveedorDeFechas proveedorFechaCompra,
-			Remera remeraComprada, String emailComprador, RegistroDeCompras registro) throws IOException {
+			Remera remeraComprada, String emailComprador, RegistroDeCompras registro, EmisorEmail emailSender)
+			throws IOException {
 		// El mail se manda desde este método o desde el registro.registrarCompra?
 		Compra compra = crearCompra(cantidadCompra, proveedorFechaCompra, remeraComprada, emailComprador);
 		registro.registrarCompra(compra);
+		emailSender.enviarCorreoConfirmacionCompra(String.valueOf(compra.cantidadRemerasCompradas()),
+				compra.datosFechaCompra(), String.valueOf(compra.obtenerMontoCompra()), compra.emailComprador());
 		return true;
 	}
 

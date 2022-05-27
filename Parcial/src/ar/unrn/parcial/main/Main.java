@@ -13,10 +13,10 @@ public class Main {
 
 	public static void main(String[] args) {
 		EmisorEmail emailSender = new EmailManager();
-		RegistroDeCompras rcc = new RegistroCompraConPipe(emailSender);
+		RegistroDeCompras rcc = new RegistroCompraConPipe();
 		ProveedorFecha proveedor = new ProveedorFecha();
 		InterfazCompras compras = new Compras();
-		GUICompraRemeras gui = new GUICompraRemeras(rcc, proveedor, compras);
+		GUICompraRemeras gui = new GUICompraRemeras(rcc, proveedor, compras, emailSender);
 
 	}
 

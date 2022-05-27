@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import ar.unrn.parcial.modelo.Compra;
+import ar.unrn.parcial.modelo.EmisorEmail;
 import ar.unrn.parcial.modelo.InterfazCompras;
 import ar.unrn.parcial.modelo.InterfazProveedorDeFechas;
 import ar.unrn.parcial.modelo.RegistroDeCompras;
@@ -33,7 +34,8 @@ public class StubObjectCompras implements InterfazCompras {
 
 	@Override
 	public boolean registrarCompra(int cantidadCompra, InterfazProveedorDeFechas proveedorFechaCompra,
-			Remera remeraComprada, String emailComprador, RegistroDeCompras registro) throws IOException {
+			Remera remeraComprada, String emailComprador, RegistroDeCompras registro, EmisorEmail emailSender)
+			throws IOException {
 		// TODO Auto-generated method stub
 		return false;
 	}

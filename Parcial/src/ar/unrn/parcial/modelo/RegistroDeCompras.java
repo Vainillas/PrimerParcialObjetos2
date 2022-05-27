@@ -6,5 +6,4 @@ public interface RegistroDeCompras {
 
 	public boolean registrarCompra(Compra compra) throws IOException;
 
-	public boolean informarCompra(Compra compra);
 }

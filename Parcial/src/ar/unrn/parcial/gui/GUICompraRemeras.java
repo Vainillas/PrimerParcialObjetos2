@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
+import ar.unrn.parcial.modelo.EmisorEmail;
 import ar.unrn.parcial.modelo.InterfazCompras;
 import ar.unrn.parcial.modelo.InterfazProveedorDeFechas;
 import ar.unrn.parcial.modelo.RegistroDeCompras;
@@ -28,6 +29,7 @@ public class GUICompraRemeras {
 	private List<Remera> listaRemerasDisponibles;
 	private InterfazProveedorDeFechas proveedorFechaCompra;
 	private InterfazCompras compras;
+	private EmisorEmail emailSender;
 
 	private JPanel contentPane;
 	private JLabel lblCantidad;
@@ -40,10 +42,11 @@ public class GUICompraRemeras {
 	private JTextField txtMonto;
 
 	public GUICompraRemeras(RegistroDeCompras registro, InterfazProveedorDeFechas proveedorFechaCompra,
-			InterfazCompras compras) {
+			InterfazCompras compras, EmisorEmail emailSender) {
 		this.registro = registro;
 		this.proveedorFechaCompra = proveedorFechaCompra;
 		this.compras = compras;
+		this.emailSender = emailSender;
 		initializeFrame();
 
 	}
@@ -84,7 +87,8 @@ public class GUICompraRemeras {
 		try {
 			int cantidadRemeras = Integer.valueOf(cantidad);
 			Remera tipoRemeraAComprar = listaRemerasDisponibles.get(comboBox.getSelectedIndex());
-			compras.registrarCompra(cantidadRemeras, proveedorFechaCompra, tipoRemeraAComprar, email, registro);
+			compras.registrarCompra(cantidadRemeras, proveedorFechaCompra, tipoRemeraAComprar, email, registro,
+					emailSender);
 			JOptionPane.showMessageDialog(new JFrame(), "La Venta se ha Realizado con Exito!", "Felicidades",
 					JOptionPane.INFORMATION_MESSAGE);
 		} catch (NumberFormatException e) {
